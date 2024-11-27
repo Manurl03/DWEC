@@ -1,4 +1,5 @@
 var listaTareas = [];
+var id = 1;
 
 function controlador(numero) {
     switch (numero) {
@@ -12,10 +13,10 @@ function controlador(numero) {
             eliminarTarea();
             break;
         case 4:
-            mostrarPorEstado(true);
+            mostrarPorEstado(false);
             break;
         case 5:
-            mostrarPorEstado(false);
+            mostrarPorEstado(true);
             break;
         default:
             console.log("Opción no válida");
@@ -24,22 +25,22 @@ function controlador(numero) {
 
 function añadir() {
     var tarea = {
+        id: id,
         nombre: '',
         estado: false,
     };
     tarea.nombre = document.getElementById('tarea').value;
-    console.log(tarea);
 
-    // Renderizar opciones para cambiar el estado
     document.getElementById('listaTareas').innerHTML = `
         <span>${tarea.nombre}</span>
-        <button onclick="añadirEstado('${tarea.nombre}', true)">Sí</button>
-        <button onclick="añadirEstado('${tarea.nombre}', false)">No</button>
-    `;
+        <button onclick="añadirEstado('${tarea.id}', '${tarea.nombre}', true)">Sí</button>
+        <button onclick="añadirEstado('${tarea.id}', '${tarea.nombre}', false)">No</button>`;
+    id++;
 }
 
-function añadirEstado(nombre, estado) {
+function añadirEstado(id, nombre, estado) {
     var tarea = {
+        id: id,
         nombre: nombre,
         estado: estado,
     };
@@ -47,18 +48,36 @@ function añadirEstado(nombre, estado) {
     listaTareas.push(tarea);
 
     document.getElementById('listaTareas').innerHTML = `<p>Tarea <strong>"${nombre}"</strong> añadida con estado: <strong> ${estado ? 'Completada' : 'Pendiente'}</strong></p>`;
-
-    console.log("Lista de tareas actualizada:", listaTareas);
 }
 
 function mostrarTodas(){
     document.getElementById('listaTareas').innerHTML = "";
     for (let tarea of listaTareas) {
-        document.getElementById('listaTareas').innerHTML += `<p>Tarea: <strong>${tarea.nombre}</strong>, Estado: <strong>${tarea.estado ? 'Completada' : 'Pendiente'}</strong></p>`;
+        document.getElementById('listaTareas').innerHTML += `<p>ID: <strong>${tarea.id}</strong> Tarea: <strong>${tarea.nombre}</strong>, Estado: <strong>${tarea.estado ? 'Completada' : 'Pendiente'}</strong></p>`;
     }    
 }
 
+function eliminarTarea(){
+    var codigo = document.getElementById('tarea').value;
+    if (!isNaN(codigo)){
+        listaTareas = listaTareas.filter(tarea => tarea.id !== codigo);
+        document.getElementById('listaTareas').innerHTML = "";
+        document.getElementById('listaTareas').innerHTML = 
+        `La tarea con id: <strong>${codigo}</strong> ha sido eliminada correctamente`;
+        document.getElementById('listaTareas').innerHTML = "Lista actualizada:";
+        for (let tarea of listaTareas) {
+            document.getElementById('listaTareas').innerHTML += `<p>ID: <strong>${tarea.id}</strong> Tarea: <strong>${tarea.nombre}</strong>, Estado: <strong>${tarea.estado ? 'Completada' : 'Pendiente'}</strong></p>`;
+        }   
+    } else {
+        document.getElementById('listaTareas').innerHTML = "";
+        document.getElementById('listaTareas').innerHTML = "La id no es un número";
+    }
+}
+
 function mostrarPorEstado(estado){
-    var listaFiltro = listaTareas.filter((tarea) => tarea.estado = estado);
-    console.log(listaFiltro);
+    var listaFiltro = listaTareas.filter(tarea => tarea.estado == estado);
+    document.getElementById('listaTareas').innerHTML = `<p>TAREAS <strong>${estado ? 'COMPLETADAS' : 'SIN COMPLETAR'}</strong></p>`
+    for (let tarea of listaFiltro) {
+        document.getElementById('listaTareas').innerHTML += `<p>ID: <strong>${tarea.id}</strong> Tarea: <strong>${tarea.nombre}</strong>, Estado: <strong>${tarea.estado ? 'Completada' : 'Pendiente'}</strong></p>`;
+    }  
 }
