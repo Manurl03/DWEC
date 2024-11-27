@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Compras</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        #lista {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Lista de Compras</h1>
+    <input id="articulo" type="text" placeholder="Ingrese un artículo">
+    <button onclick="agregarLista()">Añadir</button>
+    <button onclick="eliminarPrimeroLista()">Eliminar primer artículo</button>
+    <button onclick="eliminarUltimoLista()">Eliminar último artículo</button>
+    <button onclick="mostrarTresPrimeros()">Mostrar primeros 3 artículos</button>
+    <p id="lista"></p>
+
+    <script src="app.js"></script>
+</body>
+</html>

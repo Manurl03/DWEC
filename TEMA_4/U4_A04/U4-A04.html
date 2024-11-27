@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>U4-A04</title>
+</head>
+
+<body>
+    <input type="text" id="valor" placeholder="Escriba un valor">
+    <button onclick="buscarValor()">Buscar</button>
+    <p id="valorEncontrado"></p>
+    <p id="texto"></p>
+    <script>
+        var texto = document.getElementById('texto');
+        var array = [];
+        var numeros = 1;
+
+        for (numeros; numeros <= 21; numeros++) {
+            if (numeros % 2 !== 0) {
+                array.push(numeros);
+            }
+        }
+
+        function buscarValor() {
+            var valor = parseInt(document.getElementById('valor').value); 
+            if (array.includes (valor)) {
+                array = array.filter(numero=> numero !== valor);
+                document.getElementById('valorEncontrado').innerHTML = `<p> Array invertido: ${array}</p>`;
+            } else {
+                document.getElementById('valorEncontrado').innerHTML = '<p><strong> No se encontró el valor </strong></p>'
+            }
+        }
+
+        function volver() {
+            open('U4-A04.html', '_self');
+        }
+
+        texto.innerHTML += `<p> Array original: ${array} </p>`;
+        texto.innerHTML += `<p> Array invertido: ${array.reverse()}</p>`;
+        texto.innerHTML += `<p> Array ascendente: ${array.sort((a, b) => a - b)} </p>`; 
+        texto.innerHTML += `<p> Array descendente: ${array.sort((a, b) => b - a)} </p>`;
+    </script>
+</body>
+</html>
