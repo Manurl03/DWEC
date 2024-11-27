@@ -47,13 +47,19 @@ function añadirEstado(id, nombre, estado) {
 
     listaTareas.push(tarea);
 
-    document.getElementById('listaTareas').innerHTML = `<p>Tarea <strong>"${nombre}"</strong> añadida con estado: <strong> ${estado ? 'Completada' : 'Pendiente'}</strong></p>`;
+    document.getElementById('listaTareas').innerHTML = `
+    <p>Tarea <strong>"${nombre}"
+    </strong> añadida con estado: 
+    <strong> ${estado ? 'Completada' : 'Pendiente'}</strong></p>`;
 }
 
 function mostrarTodas(){
     document.getElementById('listaTareas').innerHTML = "";
     for (let tarea of listaTareas) {
-        document.getElementById('listaTareas').innerHTML += `<p>ID: <strong>${tarea.id}</strong> Tarea: <strong>${tarea.nombre}</strong>, Estado: <strong>${tarea.estado ? 'Completada' : 'Pendiente'}</strong></p>`;
+        document.getElementById('listaTareas').innerHTML += `<p>
+        ID: <strong>${tarea.id}</strong> 
+        Tarea: <strong>${tarea.nombre}</strong>, 
+        Estado: <strong>${tarea.estado ? 'Completada' : 'Pendiente'}</strong></p>`;
     }    
 }
 
@@ -66,7 +72,10 @@ function eliminarTarea(){
         `La tarea con id: <strong>${codigo}</strong> ha sido eliminada correctamente`;
         document.getElementById('listaTareas').innerHTML = "Lista actualizada:";
         for (let tarea of listaTareas) {
-            document.getElementById('listaTareas').innerHTML += `<p>ID: <strong>${tarea.id}</strong> Tarea: <strong>${tarea.nombre}</strong>, Estado: <strong>${tarea.estado ? 'Completada' : 'Pendiente'}</strong></p>`;
+            document.getElementById('listaTareas').innerHTML += `<p>
+            ID: <strong>${tarea.id}</strong> 
+            Tarea: <strong>${tarea.nombre}</strong>, 
+            Estado: <strong>${tarea.estado ? 'Completada' : 'Pendiente'}</strong></p>`;
         }   
     } else {
         document.getElementById('listaTareas').innerHTML = "";
@@ -76,8 +85,13 @@ function eliminarTarea(){
 
 function mostrarPorEstado(estado){
     var listaFiltro = listaTareas.filter(tarea => tarea.estado == estado);
-    document.getElementById('listaTareas').innerHTML = `<p>TAREAS <strong>${estado ? 'COMPLETADAS' : 'SIN COMPLETAR'}</strong></p>`
+    document.getElementById('listaTareas').innerHTML = `<p>
+    TAREAS <strong>${estado ? 'COMPLETADAS' : 'SIN COMPLETAR'}</strong></p>`
+    
     for (let tarea of listaFiltro) {
-        document.getElementById('listaTareas').innerHTML += `<p>ID: <strong>${tarea.id}</strong> Tarea: <strong>${tarea.nombre}</strong>, Estado: <strong>${tarea.estado ? 'Completada' : 'Pendiente'}</strong></p>`;
+        document.getElementById('listaTareas').innerHTML += `<p>
+        ID: <strong>${tarea.id}</strong> 
+        Tarea: <strong>${tarea.nombre}</strong>, 
+        Estado: <strong>${tarea.estado ? 'Completada' : 'Pendiente'}</strong></p>`;
     }  
 }
