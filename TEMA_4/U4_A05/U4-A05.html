@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>U4-A05</title>
+</head>
+<body>
+    <input type="text" id="palabras" placeholder="Introduzca las palabras">
+    <button onclick="mostrarPalabras()">Mostrar palabras</button>
+    <script>
+        function mostrarPalabras(){
+            var palabras = document.getElementById('palabras').value;
+            open(`mostrarPalabras.html?palabras=${palabras}`, '_self');
+        }
+    </script>
+</body>
+</html>

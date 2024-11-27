@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>U4-A05</title>
+</head>
+<body>
+    <p id="texto"></p>
+    <script>
+        var texto = document.getElementById('texto');
+        var palabras = new URLSearchParams(window.location.search).get('palabras');
+        var array = palabras.split(' ');
+        
+        texto.innerHTML += `<p> <strong>Array normal: </strong> ${array}`;
+        texto.innerHTML += `<p> <strong>Array reverso: </strong> ${array.reverse()}`;
+        
+        array = array.reverse();
+
+        texto.innerHTML += `<p> <strong>Primera Palabra: </strong> ${array[0]}`;
+        texto.innerHTML += `<p> <strong>Ultima Palabra: </strong> ${array[array.length - 1]}`;
+        texto.innerHTML += `<p> <strong>Cantidad de palabras: </strong> ${array.length}`;        
+        texto.innerHTML += `<p> <strong>Primera Palabra: </strong> ${array.sort()}`;
+        texto.innerHTML += `<p> <strong>Primera Palabra: </strong> ${array.sort().reverse()}`;
+
+        
+    </script>
+</body>
+</html>
