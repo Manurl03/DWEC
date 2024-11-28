@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>U4-A07</title>
+</head>
+<body>
+    <script>
+        var array = Array.from({ length: 10}, () => Math.floor(Math.random() * 11));
+        document.write('Array original(aleatorios del 1 al 10): ' + array + '<br><br>');
+
+        var menores8 = array.filter(numero => numero < 8);
+        document.write('Solo menores de 8: ' + menores8 + '<br><br>');
+
+        var intercambiarImpares = array.map(numero => numero % 2 !== 0 ? 'impar' : numero);
+        document.write('Array intercambiando impares: ' + intercambiarImpares + '<br><br>');
+    </script>
+</body>
+</html>

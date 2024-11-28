@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>U4-A08</title>
+</head>
+<body>
+    <script>
+        var array = [8, 4, 3, 8, 4];
+        document.write('Array original: ' + array + '<br>');
+
+        var positivos = array.every(numero => Number.isInteger(numero) && numero > 0);
+        document.write(`Son entero positivos? ${positivos ? 'Sí' : 'No'} <br>`);
+
+        var triplicados = array.map(numero => numero * 3);
+        document.write('Triples: ' + triplicados + '<br>');
+
+        var MultiplicaTodos = triplicados.reduce((total, numero) => total * numero, 1);
+        document.write('Multiplicación de todos: ' + MultiplicaTodos + '<br>');
+
+    </script>
+</body>
+</html>
