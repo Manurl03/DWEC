@@ -7,6 +7,7 @@
         <style>
             table {
                 border-collapse: collapse;
+                display: none;
             }
 
             th, td {
@@ -49,8 +50,17 @@
                     var alumno = [nombre, modulo1, modulo2, modulo3];
                     array.push(alumno);
                     agregarFilaTabla(alumno);
-                    console.log(array);
+                    if (array.length == 5){
+                        document.getElementById('tabla').style.display = 'table';
+                    } else {
+                        document.getElementById('error').innerHTML = 'Alumno introducido correctamente';
+                    }
                 }
+                
+                document.getElementById('nombre').value = '';
+                document.getElementById('modulo1').value = '';
+                document.getElementById('modulo2').value = '';
+                document.getElementById('modulo3').value = '';
             }
 
             function error(modulo) {
